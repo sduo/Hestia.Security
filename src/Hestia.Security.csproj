@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<PackageId>Hestia.Security</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>SDuo</Authors>
+		<PackageDescription></PackageDescription>
+		<RepositoryUrl>https://github.com/sduo/Hestia.Core</RepositoryUrl>
+		<Copyright>Copyright (c) 2022 SDuo</Copyright>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="../LICENSE" Pack="true" Visible="false" PackagePath="" />
+		<None Include="../icon.png" Pack="true" Visible="false" PackagePath="" />
+		<None Include="../README.md" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+	</ItemGroup>
+</Project>
