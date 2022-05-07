@@ -8,7 +8,7 @@
 		<Version>1.0.0</Version>
 		<Authors>SDuo</Authors>
 		<PackageDescription></PackageDescription>
-		<RepositoryUrl>https://github.com/sduo/Hestia.Core</RepositoryUrl>
+		<RepositoryUrl>https://github.com/sduo/Hestia.Security</RepositoryUrl>
 		<Copyright>Copyright (c) 2022 SDuo</Copyright>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
