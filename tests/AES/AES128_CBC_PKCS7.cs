@@ -1,10 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Hestia.Security.Tests.AES
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public sealed class AES128_CBC_PKCS7
     {
         private const string key = "645E97284A52997F9F222513DA1CF016"; // Md5("AES128_CBC_PKCS7")
