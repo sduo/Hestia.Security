@@ -6,28 +6,49 @@
 ---
 # AES
 
-## AES128_CBC_PKCS7
+## AES_CBC_PKCS7PADDING
 
 * KEY：16 位
 * IV：16 位
+* BLOCK：16 位
+* 补位：自动补位
+* 明文：无限制
 
 ```csharp
 //加密 
-byte[] encrypted = Hestia.Security.AES128_CBC_PKCS7_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
+byte[] encrypted = Hestia.Security.CRYPTO.AES_CBC_PKCS7PADDING_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
 //解密
-byte[] decrypted = Hestia.Security.AES128_CBC_PKCS7_ENCRYPT(byte[] key,byte[] iv,byte[] encrypted);
+byte[] decrypted = Hestia.Security.CRYPTO.AES_CBC_PKCS7PADDING_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
 ```
 
-## AES128_CBC_ZERO
+## AES_CBC_ZEROBYTEPADDING
 
 * KEY：16 位
 * IV：16 位
+* BLOCK：16 位
+* 补位：自动补位
+* 明文：无限制
 
 ```csharp
 //加密 
-byte[] encrypted = Hestia.Security.AES.AES128_CBC_ZERO_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
+byte[] encrypted = Hestia.Security.CRYPTO.AES_CBC_ZEROBYTEPADDING_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
 //解密
-byte[] decrypted = Hestia.Security.AES.AES128_CBC_ZERO_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
+byte[] decrypted = Hestia.Security.CRYPTO.AES_CBC_ZEROBYTEPADDING_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
+```
+
+## AES_CBC_NOPADDING
+
+* KEY：16 位
+* IV：16 位
+* BLOCK：16 位
+* 补位：无
+* 明文：必须为 BLOCK 的整数倍
+
+```csharp
+//加密 
+byte[] encrypted = Hestia.Security.CRYPTO.AES_CBC_NOPADDING_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
+//解密
+byte[] decrypted = Hestia.Security.CRYPTO.AES_CBC_NOPADDING_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
 ```
 
 # HASH
