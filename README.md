@@ -4,81 +4,65 @@
 [![](https://img.shields.io/nuget/v/Hestia.Security.svg)](https://www.nuget.org/packages/Hestia.Security)
 
 ---
-# AES
+# 应用场景
 
-## AES_CBC_PKCS7PADDING
+## 微信支付V2
 
-* KEY：16 位
-* IV：16 位
-* BLOCK：16 位
-* 补位：自动补位
-* 明文：无限制
+### 签名
 
-```csharp
-//加密 
-byte[] encrypted = Hestia.Security.CRYPTO.AES_CBC_PKCS7PADDING_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
-//解密
-byte[] decrypted = Hestia.Security.CRYPTO.AES_CBC_PKCS7PADDING_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
-```
+> https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=4_1
 
-## AES_CBC_ZEROBYTEPADDING
+* [X] ```MD5```<sup>pass</sup>
+* [X] ```HMAC-SHA256```<sup>pass</sup>
 
-* KEY：16 位
-* IV：16 位
-* BLOCK：16 位
-* 补位：自动补位
-* 明文：无限制
+## 微信支付V3
 
-```csharp
-//加密 
-byte[] encrypted = Hestia.Security.CRYPTO.AES_CBC_ZEROBYTEPADDING_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
-//解密
-byte[] decrypted = Hestia.Security.CRYPTO.AES_CBC_ZEROBYTEPADDING_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
-```
+### 签名
 
-## AES_CBC_NOPADDING
+> https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay3_3.shtml
 
-* KEY：16 位
-* IV：16 位
-* BLOCK：16 位
-* 补位：无
-* 明文：必须为 BLOCK 的整数倍
+* [X] ```SHA256withRSA```
 
-```csharp
-//加密 
-byte[] encrypted = Hestia.Security.CRYPTO.AES_CBC_NOPADDING_ENCRYPT(byte[] key,byte[] iv,byte[] decrypted);
-//解密
-byte[] decrypted = Hestia.Security.CRYPTO.AES_CBC_NOPADDING_DECRYPT(byte[] key,byte[] iv,byte[] encrypted);
-```
+### 证书和回调报文解密
 
-# HASH
+> https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay3_2.shtml
 
-## MD5
+* [X] ```AES/GCM/NoPadding```
 
-```csharp
-byte[] hash = Hestia.Security.HASH.MD5(byte[] data);
-```
+### 敏感信息加解密
 
-## SHA1
+> https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay4_3.shtml
 
-```csharp
-byte[] hash = Hestia.Security.HASH.SHA1(byte[] data);
-```
+* [X] ```RSA/ECB/OAEPWithSHA-1AndMGF1Padding```
 
-## SHA256
+## 微信第三方平台
 
-```csharp
-byte[] hash = Hestia.Security.HASH.SHA256(byte[] data);
-```
+### 消息加解密
 
-## SHA384
+> https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Before_Develop/Technical_Plan.html
 
-```csharp
-byte[] hash = Hestia.Security.HASH.SHA384(byte[] data);
-```
+* [X] ```AES/CBC/NoPadding```<sup>pass</sup>
+* [X] ```SHA1```<sup>pass</sup>
 
-## SHA512
+## 微信小程序
 
-```csharp
-byte[] hash = Hestia.Security.HASH.SHA512(byte[] data);
-```
+### 签名
+
+> https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html
+
+* [X] ```SHA1```<sup>pass</sup>
+
+### 服务端获取开放数据
+
+> https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html
+
+* [X] ```AES/CBC/PKCS7PADDING```<sup>pass</sup>
+
+## 钉钉企业内部应用
+
+### 消息订阅加密解密
+
+> https://open.dingtalk.com/document/org/configure-event-subcription
+
+* [X] ```AES/CBC/NOPADDING```<sup>pass</sup>
+* [X] ```SHA1 ```<sup>pass</sup>
