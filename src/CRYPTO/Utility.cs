@@ -7,6 +7,7 @@ using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
 using System;
+using System.Text;
 
 namespace Hestia.Security
 {
@@ -35,13 +36,13 @@ namespace Hestia.Security
             return (key, pub);
         }
 
-        public static (byte[] key, byte[] pub) RSA_GENKEY(int strength = 2048,int certainty = 25) => RSA_GENKEY(DEFAULT_RSA_PUBLIC_EXPONENT, new SecureRandom(), strength, certainty);
+        public static (byte[] key, byte[] pub) RSA_GENKEY(int strength = 2048,int certainty = 25,string encoding = "DER") => RSA_GENKEY(DEFAULT_RSA_PUBLIC_EXPONENT, new SecureRandom(), strength, certainty,encoding);
 
-        public static (byte[] key, byte[] pub) RSA_GENKEY(byte[] exponent, SecureRandom random, int strength, int certainty)
+        public static (byte[] key, byte[] pub) RSA_GENKEY(byte[] exponent, SecureRandom random, int strength, int certainty, string encoding)
         {
             AsymmetricCipherKeyPair rsa = Core.GenerateKey("RSA", new RsaKeyGenerationParameters(new BigInteger(exponent), random, strength, certainty));            
-            byte[] pub = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(rsa.Public).ToAsn1Object().GetDerEncoded();
-            byte[] key = PrivateKeyInfoFactory.CreatePrivateKeyInfo(rsa.Private).ToAsn1Object().GetDerEncoded();
+            byte[] pub = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(rsa.Public).ToAsn1Object().GetEncoded(encoding);
+            byte[] key = PrivateKeyInfoFactory.CreatePrivateKeyInfo(rsa.Private).ToAsn1Object().GetEncoded(encoding);
             return (key, pub);
         }        
     }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hestia.Security
 {
@@ -11,7 +7,7 @@ namespace Hestia.Security
         public static byte[] TrimBlockPadding(byte[] input, int size = 32)
         {
             byte pad = input[^1];
-            if (pad < 1 || pad > size) { pad = 0;}
+            //if (pad < 1 || pad > size) { pad = 0;}
             return (pad < 1 || pad > size) ? input : input[..(input.Length - pad)];
         }
 
@@ -19,7 +15,7 @@ namespace Hestia.Security
         {
             // 计算需要填充的位数
             int need = size - (int)(length % size);
-            if (need == 0){ need = size;}
+            //if (need == 0){ need = size;}
             // 获得补位所用的字符
             byte pad = (byte)(need & 0xFF);            
             byte[] block = new byte[need];
@@ -69,11 +65,13 @@ namespace Hestia.Security
 
         public static string Concat(string[] array, StringComparer comparer=null, string separator = null)
         {
+            string[] copy = new string[array.Length];
+            Array.Copy(array,copy,array.Length);
             if (comparer != null)
             {
-                Array.Sort(array, comparer);
+                Array.Sort(copy, comparer);
             }            
-            return string.Join(separator ?? string.Empty, array);
+            return string.Join(separator ?? string.Empty, copy);
         }
     }
 }
