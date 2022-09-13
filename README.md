@@ -12,8 +12,10 @@
 
 > https://pay.weixin.qq.com/wiki/doc/api/micropay.php?chapter=4_1
 
-* [X] ```MD5```<sup>pass</sup>
-* [X] ```HMAC-SHA256```<sup>pass</sup>
+* [X] ```MD5```
+    * [X] HASH/MD5/Test2
+* [X] ```HMAC-SHA256```
+    * [X] MAC/HMAC_SHA256/Test2
 
 ## 微信支付V3
 
@@ -41,8 +43,11 @@
 
 > https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/2.0/api/Before_Develop/Technical_Plan.html
 
-* [X] ```AES/CBC/NoPadding```<sup>pass</sup>
-* [X] ```SHA1```<sup>pass</sup>
+* [X] ```AES/CBC/NoPadding```
+    * [X] CRYPTO/AES_CBC_NOPADDING/Test3
+    * [X] CRYPTO/AES_CBC_NOPADDING/Test4
+* [X] ```SHA1```
+    * [X] HASH/SHA1/Test3
 
 ## 微信小程序
 
@@ -50,13 +55,16 @@
 
 > https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html
 
-* [X] ```SHA1```<sup>pass</sup>
+* [X] ```SHA1```
+    * [X] HASH/SHA1/Test2
 
 ### 服务端获取开放数据
 
 > https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html
 
-* [X] ```AES/CBC/PKCS7PADDING```<sup>pass</sup>
+* [X] ```AES/CBC/PKCS7PADDING```
+    * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test3
+    * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test4
 
 ## 钉钉企业内部应用
 
@@ -64,5 +72,37 @@
 
 > https://open.dingtalk.com/document/org/configure-event-subcription
 
-* [X] ```AES/CBC/NOPADDING```<sup>pass</sup>
-* [X] ```SHA1 ```<sup>pass</sup>
+* [X] ```AES/CBC/NOPADDING```
+    * [X] CRYPTO/AES_CBC_NOPADDING/Test5
+    * [X] CRYPTO/AES_CBC_NOPADDING/Test6
+* [X] ```SHA1 ```
+    * [X] HASH/SHA1/Test4
+
+## 阿里云接口
+
+### 签名
+
+> https://help.aliyun.com/document_detail/315526.html
+
+* [X] ```HMAC-SHA1```
+    * [X] MAC/HMAC_SHA1/Test2
+
+## 阿里云 API 网关
+
+### JWT 签名
+
+> https://help.aliyun.com/document_detail/177489.html
+
+* [X] ```SHA256withRSA```
+    * [X] SIGN/SHA256_WITH_RSA/Test4
+
+## 财政部电子票据
+
+### 签名
+
+> GM/T 0002-2012
+
+* [X] ```SM4/CBC/NOPADDING```
+    * [X] CRYPTO/SM4_CBC_NOPADDING/Test3
+    * [X] CRYPTO/SM4_CBC_NOPADDING/Test4
+* [X] ```SM3withSM2```

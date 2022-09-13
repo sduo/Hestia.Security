@@ -56,11 +56,23 @@ namespace Hestia.Security
             return num;
         }
 
-        public static string SortConcat(params string[] array) => SortConcat(array, StringComparer.Ordinal);
+        public static string OrdinalIgnoreCaseSortConcat(params string[] array) => OrdinalIgnoreCaseSortConcat(string.Empty, array);
 
-        public static string SortConcat(string[] array, StringComparer comparer, string separator = null)
+        public static string OrdinalIgnoreCaseSortConcat(string separator, params string[] array) => Concat(array, StringComparer.OrdinalIgnoreCase, separator);
+
+        public static string OrdinalSortConcat(params string[] array) => OrdinalSortConcat(string.Empty,array);
+
+        public static string OrdinalSortConcat(string separator, params string[] array) => Concat(array, StringComparer.Ordinal, separator);
+
+        public static string Concat(params string[] array) => Concat(string.Empty, array);
+        public static string Concat(string separator, params string[] array) => Concat(array, null, separator);
+
+        public static string Concat(string[] array, StringComparer comparer=null, string separator = null)
         {
-            Array.Sort(array, comparer);
+            if (comparer != null)
+            {
+                Array.Sort(array, comparer);
+            }            
             return string.Join(separator ?? string.Empty, array);
         }
     }

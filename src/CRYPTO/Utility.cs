@@ -40,8 +40,8 @@ namespace Hestia.Security
         public static (byte[] key, byte[] pub) RSA_GENKEY(byte[] exponent, SecureRandom random, int strength, int certainty)
         {
             AsymmetricCipherKeyPair rsa = Core.GenerateKey("RSA", new RsaKeyGenerationParameters(new BigInteger(exponent), random, strength, certainty));            
-            byte[] pub = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(rsa.Public).ToAsn1Object().GetEncoded();
-            byte[] key = PrivateKeyInfoFactory.CreatePrivateKeyInfo(rsa.Private).ToAsn1Object().GetEncoded();
+            byte[] pub = SubjectPublicKeyInfoFactory.CreateSubjectPublicKeyInfo(rsa.Public).ToAsn1Object().GetDerEncoded();
+            byte[] key = PrivateKeyInfoFactory.CreatePrivateKeyInfo(rsa.Private).ToAsn1Object().GetDerEncoded();
             return (key, pub);
         }        
     }

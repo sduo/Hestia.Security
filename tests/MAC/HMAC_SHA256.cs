@@ -18,6 +18,7 @@ namespace Hestia.Security.Tests.MAC
         private const string wechat_source = "appid=wxd930ea5d5a258f4f&body=test&device_info=1000&mch_id=10000100&nonce_str=ibuaiVcKdpRxkhJA&key=192006250b4c09247ec02edce69f6a2d";
         private const string wechat_hmac = "6A9AE1657590FD6257D693A078E1C3E4BB6BA4DC30B23E0EE2496E54170DACD6";
 
+        
         [TestMethod]
         public void Test1()
         {
@@ -30,6 +31,6 @@ namespace Hestia.Security.Tests.MAC
         {
             byte[] output = Security.MAC.HMAC_SHA256(Encoding.UTF8.GetBytes(wechat_key), Encoding.UTF8.GetBytes(wechat_source));
             Assert.AreEqual(wechat_hmac, Convert.ToHexString(output));
-        }
+        }        
     }
 }

@@ -41,5 +41,12 @@ namespace Hestia.Security.Tests.CRYPTO
             byte[] output = Security.CRYPTO.AES_CBC_PKCS7PADDING_DECRYPT(Convert.FromBase64String(wechat_key), Convert.FromBase64String(wechat_iv), Convert.FromBase64String(wechat_encrypted));
             Assert.AreEqual(wechat_decrypted, Encoding.UTF8.GetString(output));
         }
+
+        [TestMethod]
+        public void Test4()
+        {
+            byte[] output = Security.CRYPTO.AES_CBC_PKCS7PADDING_ENCRYPT(Convert.FromBase64String(wechat_key), Convert.FromBase64String(wechat_iv), Encoding.UTF8.GetBytes(wechat_decrypted));
+            Assert.AreEqual(wechat_encrypted, Convert.ToBase64String(output));
+        }
     }
 }

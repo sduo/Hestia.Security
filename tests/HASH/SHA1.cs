@@ -47,14 +47,14 @@ namespace Hestia.Security.Tests.HASH
         [TestMethod]
         public void Test3()
         {            
-            byte[] output = Security.HASH.SHA1(Encoding.ASCII.GetBytes(Security.Utility.SortConcat(wechat_tpp_sha1_source)));
+            byte[] output = Security.HASH.SHA1(Encoding.ASCII.GetBytes(Security.Utility.OrdinalSortConcat(wechat_tpp_sha1_source)));
             Assert.AreEqual(wechat_tpp_sha1, Convert.ToHexString(output),true);
         }
 
         [TestMethod]
         public void Test4()
         {
-            byte[] output = Security.HASH.SHA1(Encoding.ASCII.GetBytes(Security.Utility.SortConcat(dingtalk_source)));
+            byte[] output = Security.HASH.SHA1(Encoding.ASCII.GetBytes(Security.Utility.OrdinalSortConcat(dingtalk_source)));
             Assert.AreEqual(dingtalk_sha1, Convert.ToHexString(output),true);
         }
     }
