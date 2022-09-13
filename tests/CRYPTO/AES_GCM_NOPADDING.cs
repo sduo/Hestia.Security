@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Org.BouncyCastle.Crypto.Parameters;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -24,6 +25,22 @@ namespace Hestia.Security.Tests.CRYPTO
         public void Test2()
         {
             byte[] output = Security.CRYPTO.AES_GCM_NOPADDING_DECRYPT(Convert.FromHexString(key), Convert.FromHexString(iv), Convert.FromHexString(encrypted));
+            Assert.AreEqual(decrypted, Convert.ToHexString(output));
+        }
+
+        [TestMethod]
+        public void Test3()
+        {
+            var k = new ParametersWithIV(new KeyParameter(Convert.FromHexString(key)), Convert.FromHexString(iv));
+            byte[] output = Security.CRYPTO.AES_GCM_NOPADDING_ENCRYPT(k, Convert.FromHexString(decrypted));
+            Assert.AreEqual(encrypted, Convert.ToHexString(output));
+        }
+
+        [TestMethod]
+        public void Test4()
+        {
+            var k = new ParametersWithIV(new KeyParameter(Convert.FromHexString(key)), Convert.FromHexString(iv));
+            byte[] output = Security.CRYPTO.AES_GCM_NOPADDING_DECRYPT(k, Convert.FromHexString(encrypted));
             Assert.AreEqual(decrypted, Convert.ToHexString(output));
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Org.BouncyCastle.Security;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -37,5 +38,15 @@ namespace Hestia.Security.Tests.SIGN
             byte[] signature = Security.SIGN.SM3_WITH_SM2_SIGN(key, input);
             Assert.IsTrue(Security.SIGN.SM3_WITH_SM2_VERIFY(pub, input, signature));
         }
+
+        [TestMethod]
+        public void Test4()
+        {
+            (byte[] key, byte[] pub) = Security.Utility.EC_GENKEY(Security.Utility.SM2P256V1_DOMAIN,true);
+            byte[] input = Encoding.UTF8.GetBytes(source);
+            byte[] signature = Security.SIGN.SM3_WITH_SM2_SIGN(key, input);
+            Assert.IsTrue(Security.SIGN.SM3_WITH_SM2_VERIFY(pub, input, signature));
+        }
+
     }
 }

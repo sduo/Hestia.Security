@@ -20,5 +20,11 @@ namespace Hestia.Security.Tests.Utility
         {
            Assert.AreEqual(target,Convert.ToHexString( Security.Utility.TrimBlockPadding(Convert.FromHexString(source))));
         }
+
+        [TestMethod]
+        public void Test2()
+        {
+            Assert.AreEqual("01020304050607080910", Convert.ToHexString(Security.Utility.TrimBlockPadding(Convert.FromHexString("01020304050607080910"),8)));
+        }
     }
 }

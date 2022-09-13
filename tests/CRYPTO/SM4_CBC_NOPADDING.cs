@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Org.BouncyCastle.Crypto.Parameters;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
@@ -54,5 +55,22 @@ namespace Hestia.Security.Tests.CRYPTO
             }            
             Assert.AreEqual(gb_encrypted_1M, Convert.ToHexString(data));
         }
+
+        [TestMethod]
+        public void Test5()
+        {
+            var k = new ParametersWithIV(new KeyParameter(Convert.FromHexString(key)), Convert.FromHexString(iv));
+            byte[] output = Security.CRYPTO.SM4_CBC_NOPADDING_ENCRYPT(k, Convert.FromHexString(decrypted));
+            Assert.AreEqual(encrypted, Convert.ToHexString(output));
+        }
+
+        [TestMethod]
+        public void Test6()
+        {
+            var k = new ParametersWithIV(new KeyParameter(Convert.FromHexString(key)), Convert.FromHexString(iv));
+            byte[] output = Security.CRYPTO.SM4_CBC_NOPADDING_DECRYPT(k, Convert.FromHexString(encrypted));
+            Assert.AreEqual(decrypted, Convert.ToHexString(output));
+        }
+
     }
 }

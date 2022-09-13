@@ -1,4 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.Security;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -22,11 +25,23 @@ namespace Hestia.Security.Tests.CRYPTO
         }
 
         [TestMethod]
-        public void Test3()
+        public void Test2()
         {
             (byte[] key, byte[] pub) = Security.Utility.SM2_GENKEY();
             byte[] output = Security.CRYPTO.SM2_DECRYPT(key, Security.CRYPTO.SM2_ENCRYPT(pub, Encoding.UTF8.GetBytes(source)));
             Assert.AreEqual(source, Encoding.UTF8.GetString(output));
         }
+
+        [TestMethod]
+        public void Test3()
+        {
+            (byte[] key, byte[] pub) = Security.Utility.SM2_GENKEY();
+            var k = new ECPrivateKeyParameters(new BigInteger(key),Security.Utility.SM2P256V1_DOMAIN);
+            var p = new ParametersWithRandom(new ECPublicKeyParameters(Security.Utility.SM2P256V1.Curve.DecodePoint(pub), Security.Utility.SM2P256V1_DOMAIN), new SecureRandom());
+            byte[] output = Security.CRYPTO.SM2_DECRYPT(k, Security.CRYPTO.SM2_ENCRYPT(p, Encoding.UTF8.GetBytes(source)));
+            Assert.AreEqual(source, Encoding.UTF8.GetString(output));
+        }
+
+
     }
 }

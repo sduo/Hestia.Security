@@ -1,4 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Org.BouncyCastle.Asn1;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Security;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -29,5 +32,14 @@ namespace Hestia.Security.Tests.CRYPTO
             Assert.AreEqual(source, Encoding.UTF8.GetString(output));
         }
 
+        [TestMethod]
+        public void Test3()
+        {
+            (byte[] key, byte[] pub) = Security.Utility.RSA_GENKEY();
+            var k = PrivateKeyFactory.CreateKey(Asn1Object.FromByteArray(key).GetEncoded());
+            var p = PublicKeyFactory.CreateKey(SubjectPublicKeyInfo.GetInstance(Asn1Object.FromByteArray(pub)));
+            byte[] output = Security.CRYPTO.RSA_ECB_OAEPWITHSHA1ANDMGF1PADDING_DECRYPT(p, Security.CRYPTO.RSA_ECB_OAEPWITHSHA1ANDMGF1PADDING_ENCRYPT(k, Encoding.UTF8.GetBytes(source)));
+            Assert.AreEqual(source, Encoding.UTF8.GetString(output));
+        }
     }
 }

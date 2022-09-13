@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Org.BouncyCastle.Crypto.Parameters;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -106,6 +107,22 @@ namespace Hestia.Security.Tests.CRYPTO
             byte[] output = Security.Utility.TrimBlockPadding(Security.CRYPTO.AES_CBC_NOPADDING_DECRYPT(key, iv, encrypted));
             int index = Security.Utility.BitConverterGetInt(output[16..20]) + 20;
             Assert.AreEqual(string.Join(":", dingtalk_appid, dingtalk_decrypted), string.Join(":", Encoding.UTF8.GetString(output[index..]), Encoding.UTF8.GetString(output[20..index])));
+        }
+
+        [TestMethod]
+        public void Test7()
+        {
+            var k = new ParametersWithIV(new KeyParameter(Convert.FromHexString(key)), Convert.FromHexString(iv));
+            byte[] output = Security.CRYPTO.AES_CBC_NOPADDING_ENCRYPT(k, Convert.FromHexString(decrypted));
+            Assert.AreEqual(encrypted, Convert.ToHexString(output));
+        }
+
+        [TestMethod]
+        public void Test8()
+        {
+            var k = new ParametersWithIV(new KeyParameter(Convert.FromHexString(key)), Convert.FromHexString(iv));
+            byte[] output = Security.CRYPTO.AES_CBC_NOPADDING_DECRYPT(k, Convert.FromHexString(encrypted));
+            Assert.AreEqual(decrypted, Convert.ToHexString(output));
         }
     }
 }
