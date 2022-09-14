@@ -78,6 +78,16 @@
 * [X] ```SHA1 ```
     * [X] HASH/SHA1/Test4
 
+## 钉钉机器人
+
+### 自定义机器人签名
+
+> https://open.dingtalk.com/document/robots/customize-robot-security-settings
+
+* [X] ```HMAC-SHA256```
+    * [X] MAC/HMAC_SHA256/Test3
+
+
 ## 阿里云接口
 
 ### 签名
