@@ -105,14 +105,3 @@
 
 * [X] ```SHA256withRSA```
     * [X] SIGN/SHA256_WITH_RSA/Test4
-
-## 财政部电子票据
-
-### 签名
-
-> GM/T 0002-2012
-
-* [X] ```SM4/CBC/NOPADDING```
-    * [X] CRYPTO/SM4_CBC_NOPADDING/Test3
-    * [X] CRYPTO/SM4_CBC_NOPADDING/Test4
-* [X] ```SM3withSM2```
