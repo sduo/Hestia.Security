@@ -12,10 +12,19 @@ namespace Hestia.Security.Tests.CRYPTO
     [ExcludeFromCodeCoverage]
     public sealed class HXJZ
     {
+        private const string encrypted = "自由爱国公正平等法治和谐法治自由公正敬业公正民主文明诚信自由平等和谐公正平等公正和谐法治平等法治文明公正敬业法治自由法治敬业";
+        private const string decrypted = "Hestia.Security";
+
         [TestMethod]
-        public void Test()
+        public void Test1()
         {
-            Security.CRYPTO.HXJZ("123ABC");
+            Assert.AreEqual(encrypted, Security.CRYPTO.HXJZ_ENCRYPT(decrypted));
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            Assert.AreEqual(decrypted, Security.CRYPTO.HXJZ_DECRYPT(encrypted));
         }
     }
 }
