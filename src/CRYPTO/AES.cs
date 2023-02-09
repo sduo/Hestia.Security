@@ -62,5 +62,20 @@ namespace Hestia.Security
         private static byte[] AES_GCM_NOPADDING(bool encrypt, ICipherParameters key, byte[] input) => Core.Crypto("AES/GCM/NOPADDING", encrypt, key, input);
 
         #endregion
+
+        #region AES/ECB/PKCS5Padding
+        public static byte[] AES_ECB_PKCS5PADDING_DECRYPT(byte[] key, byte[] input) => AES_ECB_PKCS5PADDING(false, key,input);
+
+        public static byte[] AES_ECB_PKCS5PADDING_DECRYPT(ICipherParameters key, byte[] input) => AES_ECB_PKCS5PADDING(false, key, input);
+
+        public static byte[] AES_ECB_PKCS5PADDING_ENCRYPT(byte[] key, byte[] input) => AES_ECB_PKCS5PADDING(true, key,input);
+
+        public static byte[] AES_ECB_PKCS5PADDING_ENCRYPT(ICipherParameters key, byte[] input) => AES_ECB_PKCS5PADDING(true, key, input);
+
+        private static byte[] AES_ECB_PKCS5PADDING(bool encrypt, byte[] key, byte[] input) => AES_ECB_PKCS5PADDING(encrypt, new KeyParameter(key), input);
+
+        private static byte[] AES_ECB_PKCS5PADDING(bool encrypt, ICipherParameters key, byte[] input) => Core.Crypto("AES/ECB/PKCS5Padding", encrypt, key, input);
+
+        #endregion
     }
 }

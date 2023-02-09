@@ -169,5 +169,22 @@ sha256:09be4a8404ae81630c4bc6fb6c58df816a724d48e7ff2dd22ff79d87e43f342a
 sm3:34a137b8bba3b6eefbee72eac423eddefc67048ba9e1fa725139ad596e8dedf4
 ```
 
+## 链上公益
+
+### 接口加解密
+
+* [X] ```RSA/ECB/PKCS1Padding```
+* [X] ```AES/ECB/PKCS5Padding```
+* [X] ```SHA256```
+* [X] ```SHA-256withRSA```
+
+## TOTP
+
+* [X] ```HMAC-SHA1```
+    * [X] Utility/OTP/Test9
+
 # 感谢
+* https://www.rfc-editor.org/rfc/rfc2104
+* https://www.rfc-editor.org/rfc/rfc4226
+* https://www.rfc-editor.org/rfc/rfc6238
 * https://github.com/sym233/core-values-encoder/
