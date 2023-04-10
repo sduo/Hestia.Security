@@ -5,7 +5,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<PackageId>Hestia.Security</PackageId>
-		<Version>1.1.4</Version>
+		<Version>1.1.5</Version>
 		<Authors>SDuo</Authors>
 		<PackageDescription></PackageDescription>
 		<RepositoryUrl>https://github.com/sduo/Hestia.Security</RepositoryUrl>
