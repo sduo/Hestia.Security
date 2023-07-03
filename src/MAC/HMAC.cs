@@ -5,6 +5,10 @@ namespace Hestia.Security
 {
     public static partial class MAC
     {
+        public static byte[] HMAC_MD5(byte[] key, byte[] input) => HMAC_MD5(new KeyParameter(key), input);
+
+        public static byte[] HMAC_MD5(ICipherParameters key, byte[] input) => Core.HMAC("HMAC-MD5", key, input);
+
         public static byte[] HMAC_SHA1(byte[] key, byte[] input) => HMAC_SHA1(new KeyParameter(key),input);
         public static byte[] HMAC_SHA1(ICipherParameters key, byte[] input) => Core.HMAC("HMAC-SHA1", key, input);
 

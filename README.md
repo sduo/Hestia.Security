@@ -87,6 +87,37 @@
 * [X] ```HMAC-SHA256```
     * [X] MAC/HMAC_SHA256/Test3
 
+## 淘宝开放平台
+
+### 签名
+
+> https://open.taobao.com/doc.htm?docId=101617&docType=1
+
+* [X] ```MD5```
+    * [X] HASH/MD5/Test3
+* [X] ```HMAC-MD5```
+    * [X] MAC/HMAC_MD5/Test2
+    ```csharp
+    // https://try.dot.net/
+    using System;
+    using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
+
+    public class Program
+    {
+        public static void Main()
+        {
+            string source = "app_key12345678fieldsnum_iid,title,nick,price,numformatjsonmethodtaobao.item.seller.getnum_iid11223344sessiontestsign_methodmd5timestamp2016-01-01 12:00:00v2.0";
+            string key = "helloworld";
+            HMACMD5 hmac = new HMACMD5(Encoding.UTF8.GetBytes(key));
+            byte[] data = hmac.ComputeHash(Encoding.UTF8.GetBytes(source));
+            string hex = string.Concat(data.Select(x=>x.ToString("X2"))); // B4DDA503460D60A86B16E950E5D303E9
+            Console.WriteLine(hex);
+        }
+    }
+    ```
+* [ ] ```HMAC-SHA256```
 
 ## 阿里云接口
 

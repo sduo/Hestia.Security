@@ -23,7 +23,7 @@ namespace Hestia.Security.Tests.MAC
         private const string wechat_hmac = "6A9AE1657590FD6257D693A078E1C3E4BB6BA4DC30B23E0EE2496E54170DACD6";
 
 
-        //https://open.dingtalk.com/document/robots/customize-robot-security-settings
+        // https://open.dingtalk.com/document/robots/customize-robot-security-settings
         private const string dingtalk_secret = "SEC0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
         private const string dingtalk_timestamp = "1234567890987";
         private const string dingtalk_hmac = "DS4ksAxenBH2OvTFmGArI+u0ba8l5x9WZOdj6LHZzUo=";
@@ -47,6 +47,6 @@ namespace Hestia.Security.Tests.MAC
         {
             byte[] output = Security.MAC.HMAC_SHA256(Encoding.UTF8.GetBytes(dingtalk_secret), Encoding.UTF8.GetBytes(Security.Utility.Concat("\n", dingtalk_timestamp, dingtalk_secret)));
             Assert.AreEqual(dingtalk_hmac, Convert.ToBase64String(output));           
-        }
+        }       
     }
 }
