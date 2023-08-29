@@ -209,6 +209,19 @@ sm3:34a137b8bba3b6eefbee72eac423eddefc67048ba9e1fa725139ad596e8dedf4
 * [X] ```SHA256```
 * [X] ```SHA-256withRSA```
 
+## 腾讯公募系统
+
+### 签名
+
+> 腾讯公益与公募机构电子发票对接文档(2023-07-17 15:07)
+
+* [X] ```SHA256```
+    * [X] HASH/SHA256/Test3
+
+```bash
+echo -n 'key1=v1&key2=v2&key3=v3...' | sha256sum
+```
+
 ## TOTP
 
 * [X] ```HMAC-SHA1```
