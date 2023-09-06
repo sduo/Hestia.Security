@@ -62,5 +62,13 @@ namespace Hestia.Security.Tests.Utility
             Assert.AreEqual(source, encoding.GetString(Convert.FromBase64String(target64)));
         }
 
+        [TestMethod]
+        public void Test9()
+        {
+            var data = Guid.NewGuid().ToByteArray();
+            var hex = Convert.ToHexString(Security.Utility.FromBase32String(Security.Utility.ToBase32String(data)));
+            Assert.AreEqual(Convert.ToHexString(data), hex);
+        }
+
     }
 }

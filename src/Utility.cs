@@ -258,7 +258,15 @@ namespace Hestia.Security
                         index = 0;
                     }
                     encoded <<= 1;
-                }
+                }                
+            }
+            if (index++ != 0)
+            {
+                encoded <<= (pow - index);
+                if (map.ContainsKey(encoded)) 
+                {
+                    yield return map[encoded];
+                }                
             }
         }
 
