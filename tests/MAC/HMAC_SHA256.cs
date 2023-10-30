@@ -28,6 +28,12 @@ namespace Hestia.Security.Tests.MAC
         private const string dingtalk_timestamp = "1234567890987";
         private const string dingtalk_hmac = "DS4ksAxenBH2OvTFmGArI+u0ba8l5x9WZOdj6LHZzUo=";
 
+        // https://open.gongyi.qq.com/docs/server_api/%E5%BC%80%E5%8F%91%E5%89%8D%E5%BF%85%E8%AF%BB/%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E5%87%AD%E8%AF%81.html#%E5%BA%94%E7%94%A8%E7%AD%BE%E5%90%8D
+        private const string tencent_gongyi_key = "secret1234567890secret1234567890";
+        private const string tencent_gongyi_source = "Gy-H-Api-Appid=12345&Gy-H-Api-Nonce-Str=1234567890abcdef1234567890abcdef&Gy-H-Api-Timestamp=1650966683";
+        private const string tencent_gongyi_hmac = "76D81D6C374C989111297C4EB3F804B274FD4093BA2E9B6255DAB30653DBE229";
+
+
         [TestMethod]
         public void Test1()
         {
@@ -47,6 +53,13 @@ namespace Hestia.Security.Tests.MAC
         {
             byte[] output = Security.MAC.HMAC_SHA256(Encoding.UTF8.GetBytes(dingtalk_secret), Encoding.UTF8.GetBytes(Security.Utility.Concat("\n", dingtalk_timestamp, dingtalk_secret)));
             Assert.AreEqual(dingtalk_hmac, Convert.ToBase64String(output));           
-        }       
+        }
+
+        [TestMethod]
+        public void Test4()
+        {
+            byte[] output = Security.MAC.HMAC_SHA256(Encoding.UTF8.GetBytes(tencent_gongyi_key), Encoding.UTF8.GetBytes($"{tencent_gongyi_source}&key={tencent_gongyi_key}"));
+            Assert.AreEqual(tencent_gongyi_hmac, Convert.ToHexString(output));
+        }
     }
 }

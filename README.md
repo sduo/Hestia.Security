@@ -222,6 +222,15 @@ sm3:34a137b8bba3b6eefbee72eac423eddefc67048ba9e1fa725139ad596e8dedf4
 echo -n 'key1=v1&key2=v2&key3=v3...' | sha256sum
 ```
 
+## 腾讯公益开放平台
+
+### 签名
+
+> https://open.gongyi.qq.com/docs/server_api/%E5%BC%80%E5%8F%91%E5%89%8D%E5%BF%85%E8%AF%BB/%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E5%87%AD%E8%AF%81.html#%E5%BA%94%E7%94%A8%E7%AD%BE%E5%90%8D
+
+* [X] ```HMAC-SHA256```
+    * [X] MAC/HMAC_SHA256/Test4
+
 ## TOTP
 
 * [X] ```HMAC-SHA1```
