@@ -66,6 +66,17 @@
     * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test3
     * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test4
 
+## 支付宝密钥工具
+
+### 签名
+
+> https://opendocs.alipay.com/common/02kipk
+
+* [X] ```SHA256WITHRSA```
+    * [X] SIGN/SHA256_WITH_RSA/Test6
+
+
+
 ## 钉钉企业内部应用
 
 ### 消息订阅加密解密
