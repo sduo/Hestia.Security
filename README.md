@@ -66,6 +66,15 @@
     * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test3
     * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test4
 
+## 支付宝接口内容加密
+
+> https://opendocs.alipay.com/common/02mse3
+> https://github.com/alipay/alipay-sdk-net-all/blob/master/v2/AlipaySDKNet.Standard/Util/AlipayEncrypt.cs
+
+* [X] ```AES_CBC_PKCS7PADDING```
+    * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test7
+    * [X] CRYPTO/AES_CBC_PKCS7PADDING/Test8
+
 ## 支付宝密钥工具
 
 ### 签名
