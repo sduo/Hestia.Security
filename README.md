@@ -251,6 +251,15 @@ echo -n 'key1=v1&key2=v2&key3=v3...' | sha256sum
 * [X] ```HMAC-SHA256```
     * [X] MAC/HMAC_SHA256/Test4
 
+## 字节跳动公益票据
+
+### 签名
+
+> https://lingxi.feishu.cn/docx/WYwdd7CFvo0enXxAjvicfM2KnXg
+
+* [X] ```SHA256```
+    * [X] HASH/SHA256/Test4 
+
 ## TOTP
 
 * [X] ```HMAC-SHA1```
