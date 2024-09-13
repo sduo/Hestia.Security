@@ -269,4 +269,3 @@ echo -n 'key1=v1&key2=v2&key3=v3...' | sha256sum
 * https://www.rfc-editor.org/rfc/rfc2104
 * https://www.rfc-editor.org/rfc/rfc4226
 * https://www.rfc-editor.org/rfc/rfc6238
-* https://github.com/sym233/core-values-encoder/

@@ -5,7 +5,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<PackageId>Hestia.Security</PackageId>
-		<Version>1.1.8</Version>
+		<Version>1.1.9</Version>
 		<Authors>SDuo</Authors>
 		<PackageDescription></PackageDescription>
 		<RepositoryUrl>https://github.com/sduo/Hestia.Security</RepositoryUrl>
@@ -14,6 +14,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<LangVersion>12.0</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="../LICENSE" Pack="true" Visible="false" PackagePath="" />
