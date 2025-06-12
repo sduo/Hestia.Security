@@ -7,6 +7,14 @@ namespace Hestia.Security
 {
     public static partial class SIGN
     {
+        public static byte[] MD5_WITH_RSA_SIGN(byte[] key, byte[] input) => MD5_WITH_RSA_SIGN(PrivateKeyFactory.CreateKey(Asn1Object.FromByteArray(key).GetEncoded()), input);
+
+        public static byte[] MD5_WITH_RSA_SIGN(ICipherParameters key, byte[] input) => Core.Sign("MD5WITHRSA", key, input);
+
+        public static bool MD5_WITH_RSA_VERIFY(byte[] pub, byte[] input, byte[] signature) => MD5_WITH_RSA_VERIFY(PublicKeyFactory.CreateKey(SubjectPublicKeyInfo.GetInstance(Asn1Object.FromByteArray(pub))), input, signature);
+
+        public static bool MD5_WITH_RSA_VERIFY(ICipherParameters pub, byte[] input, byte[] signature) => Core.Verify("MD5WITHRSA", pub, input, signature);
+
         public static byte[] SHA1_WITH_RSA_SIGN(byte[] key, byte[] input) => SHA1_WITH_RSA_SIGN(PrivateKeyFactory.CreateKey(Asn1Object.FromByteArray(key).GetEncoded()), input);
 
         public static byte[] SHA1_WITH_RSA_SIGN(ICipherParameters key, byte[] input) => Core.Sign("SHA1WITHRSA", key, input);
